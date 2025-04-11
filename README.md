@@ -138,3 +138,69 @@ Instead of copying `node_modules`, you need to:
 - ✅ Works flawlessly even in fully offline setups.
 
 Let me know if you want a ready-made `.tgz` link or a shell script to automate this on Linux.
+
+
+
+
+--------------------------------------------------------------------------
+
+
+
+To **install PM2 globally on an offline Linux system**, you must recreate what `npm i -g pm2` does — but without internet. Here's the **bulletproof method**:
+
+---
+
+## 🧠 Summary: Offline Global PM2 Installation (Linux)
+
+### 🔁 On the Windows (Online) Machine
+
+1. **Download PM2 `.tgz` package**:
+   ```bash
+   npm pack pm2
+   ```
+   This will create a file like:
+   ```
+   pm2-<version>.tgz
+   ```
+
+2. Copy this file (`pm2-*.tgz`) to your USB drive.
+
+---
+
+### 🐧 On the Linux (Offline) Machine
+
+> ⚠️ Make sure Node.js and npm are already installed.
+
+#### 1. Copy `pm2-<version>.tgz` to the Linux machine, e.g., `~/Downloads/pm2.tgz`
+
+#### 2. Run the following to install **PM2 globally**:
+```bash
+sudo npm install -g ~/Downloads/pm2-<version>.tgz
+```
+
+> Replace `<version>` with the actual version, e.g., `pm2-5.3.0.tgz`.
+
+---
+
+#### ✅ Verify:
+```bash
+pm2 -v
+```
+
+You should now have `pm2` available globally via the terminal.
+
+---
+
+### 🧰 Bonus: How to Get the Exact `.tgz` Filename (Optional)
+You can run:
+```bash
+npm pack pm2
+```
+It'll output something like:
+```bash
+pm2-5.3.0.tgz
+```
+
+---
+
+Let me know if you want a custom Bash script that detects the `.tgz` and installs it automatically.
